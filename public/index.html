@@ -66,42 +66,70 @@
           <div class="feature-copy"><p class="project-context">MICS × Safran · Sept. 2026</p><h3>Tétraédralisation de Delaunay 3D sur GPU</h3><p>Comparer les méthodes CPU et GPU, mesurer leur passage à l’échelle et vérifier la robustesse géométrique.</p><ul class="tags" aria-label="Technologies"><li>Python</li><li>NVIDIA A100</li><li>Calcul parallèle</li></ul><button class="button button-primary js-only" type="button" data-project="delaunay">Voir le projet</button><details class="fallback-details"><summary>Voir les détails</summary><ul class="bullet-list"><li>Étude empirique de sept algorithmes CPU/GPU sur des nuages allant jusqu’à un million de points, avec une NVIDIA A100.</li><li>Comparaison des performances, de la scalabilité et de la robustesse numérique.</li><li>Validation par prédicats géométriques robustes, couverture de l’enveloppe convexe, cohérence des volumes et similarité de Jaccard.</li><li>Étude de l’effet d’un jitter contrôlé sur les cas dégénérés et le recours à l’arithmétique exacte.</li></ul><p>Une démarche de benchmarking reproductible qui examine conjointement vitesse, validité géométrique et comportement numérique.</p></details></div>
         </article>
         <div class="project-grid"><article class="project-card reveal" data-project-card data-category="ml" data-extra="false" id="project-trustworthy-ai">
+    <div class="project-animation js-only">
+      <canvas id="scene-trustworthy-ai" data-project-scene="trustworthy-ai" width="440" height="184" role="img" aria-label="Perturbations autour d’une frontière de classification">Perturbations autour d’une frontière de classification</canvas>
+      <div class="project-animation-footer"><span>Illustration du concept</span><button type="button" class="animation-toggle" data-animation-toggle aria-controls="scene-trustworthy-ai" aria-pressed="false" aria-label="Animer : IA de confiance"><span class="animation-icon" aria-hidden="true"></span>Animation</button></div>
+    </div>
     <p class="project-context">CISPA · Nov. 2025</p>
     <h3>IA de confiance</h3>
     <p>3e sur 16 équipes · Qualification pour la finale européenne.</p>
     <button class="text-button js-only" type="button" data-project="trustworthy-ai">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
     <details class="fallback-details"><summary>Voir les détails</summary><p>Évaluer la robustesse de classifieurs cachés et identifier l’origine de contenus générés lors du hackathon CISPA Paris Cybersecurity &amp; AI.</p><ul class="bullet-list"><li>Attaques adversariales black-box à faible perturbation L2, à partir d’ensembles de modèles CNN et ViT.</li><li>Variantes de PGD, transfert d’attaques et calibration des perturbations par recherche binaire.</li><li>Attribution de modèles génératifs à partir d’erreurs de reconstruction de plusieurs autoencodeurs.</li><li>Fine-tuning d’un ResNet-50 pour la détection de filigranes, avec calibration ROC à 1 % de faux positifs.</li></ul><p>Une expérience de recherche en équipe, combinant robustesse adversariale, expérimentation rapide et évaluation sous contraintes.</p></details>
   </article><article class="project-card reveal" data-project-card data-category="ml" data-extra="false" id="project-forecasting">
+    <div class="project-animation js-only">
+      <canvas id="scene-forecasting" data-project-scene="forecasting" width="440" height="184" role="img" aria-label="Série temporelle et horizons de prévision">Série temporelle et horizons de prévision</canvas>
+      <div class="project-animation-footer"><span>Illustration du concept</span><button type="button" class="animation-toggle" data-animation-toggle aria-controls="scene-forecasting" aria-pressed="false" aria-label="Animer : Prévision multimodale de séries temporelles"><span class="animation-icon" aria-hidden="true"></span>Animation</button></div>
+    </div>
     <p class="project-context">NUS · Jan.–Mai 2025</p>
     <h3>Prévision multimodale de séries temporelles</h3>
     <p>Seq2Seq, LSTM et cross-attention pour la prévision du box-office.</p>
     <button class="text-button js-only" type="button" data-project="forecasting">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
     <details class="fallback-details"><summary>Voir les détails</summary><p>Prévoir plusieurs horizons de revenus en combinant leur historique avec des caractéristiques numériques, catégorielles et temporelles.</p><ul class="bullet-list"><li>Conception d’un encodeur-décodeur LSTM fusionnant les séries historiques, les variables statiques et des embeddings catégoriels.</li><li>Cross-attention multi-têtes entre les requêtes du décodeur et les états de l’encodeur.</li><li>Connexions résiduelles, layer normalization, dropout et tête de prédiction feedforward.</li><li>Sélection de retards par ACF/PACF, encodages cycliques et statistiques en fenêtres glissantes.</li></ul><p>34,51 % de MdAPE sur le jeu de test du projet. Une étude du lien entre représentation temporelle, fusion de modalités et qualité de prévision.</p></details>
   </article><article class="project-card reveal" data-project-card data-category="ml" data-extra="false" id="project-fashion-retrieval">
+    <div class="project-animation js-only">
+      <canvas id="scene-fashion-retrieval" data-project-scene="fashion-retrieval" width="440" height="184" role="img" aria-label="Recherche de vêtements proches dans un espace de représentation">Recherche de vêtements proches dans un espace de représentation</canvas>
+      <div class="project-animation-footer"><span>Illustration du concept</span><button type="button" class="animation-toggle" data-animation-toggle aria-controls="scene-fashion-retrieval" aria-pressed="false" aria-label="Animer : Recherche visuelle de mode"><span class="animation-icon" aria-hidden="true"></span>Animation</button></div>
+    </div>
     <p class="project-context">CentraleSupélec × QuickFind · Sept.–Déc. 2024</p>
     <h3>Recherche visuelle de mode</h3>
     <p>ViT, SwinV2 et apprentissage métrique pour retrouver des images similaires.</p>
     <button class="text-button js-only" type="button" data-project="fashion-retrieval">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
     <details class="fallback-details"><summary>Voir les détails</summary><p>Construire un espace de représentation qui rapproche les vêtements visuellement similaires et sépare les exemples moins pertinents.</p><ul class="bullet-list"><li>Conception et fine-tuning d’une architecture à poids partagés pour des triplets anchor / positive / negative.</li><li>Optimisation avec une triplet-margin loss et recherche par similarité cosinus.</li><li>Comparaison de l’attention globale de ViT et de l’attention hiérarchique à fenêtres décalées de SwinV2.</li><li>Benchmark face à Jina CLIP à l’aide de distributions de distances, de projections t-SNE et d’attributs visuels définis avec le partenaire.</li></ul><p>Une exploration de la qualité des embeddings et des critères d’évaluation d’un moteur de recherche visuelle.</p></details>
   </article><article class="project-card reveal" data-project-card data-category="ml" data-extra="false" id="project-reinforcement-learning">
+    <div class="project-animation js-only">
+      <canvas id="scene-reinforcement-learning" data-project-scene="reinforcement-learning" width="440" height="184" role="img" aria-label="Équilibrage d’un pendule inversé sur un chariot">Équilibrage d’un pendule inversé sur un chariot</canvas>
+      <div class="project-animation-footer"><span>Illustration du concept</span><button type="button" class="animation-toggle" data-animation-toggle aria-controls="scene-reinforcement-learning" aria-pressed="false" aria-label="Animer : Contrôle par renforcement"><span class="animation-icon" aria-hidden="true"></span>Animation</button></div>
+    </div>
     <p class="project-context">NUS · Jan.–Mai 2025</p>
     <h3>Contrôle par renforcement</h3>
     <p>Apprentissage d’une politique DQN pour équilibrer un pendule inversé dans CartPole.</p>
     <button class="text-button js-only" type="button" data-project="reinforcement-learning">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
     <details class="fallback-details"><summary>Voir les détails</summary><p>Apprendre une politique de contrôle par interaction avec un environnement simulé plutôt que par programmation explicite de chaque action.</p><ul class="bullet-list"><li>Implémentation d’un agent Deep Q-Network pour l’environnement CartPole.</li><li>Experience replay pour réutiliser les transitions collectées.</li><li>Exploration ε-greedy et mises à jour par différence temporelle.</li></ul><p>Une mise en pratique des mécanismes fondamentaux de l’apprentissage par renforcement pour le contrôle non linéaire.</p></details>
   </article><article class="project-card reveal" data-project-card data-category="ml" data-extra="true" id="project-segmentation">
+    <div class="project-animation js-only">
+      <canvas id="scene-segmentation" data-project-scene="segmentation" width="440" height="184" role="img" aria-label="Masques et identifiants suivant des objets en mouvement">Masques et identifiants suivant des objets en mouvement</canvas>
+      <div class="project-animation-footer"><span>Illustration du concept</span><button type="button" class="animation-toggle" data-animation-toggle aria-controls="scene-segmentation" aria-pressed="false" aria-label="Animer : Segmentation guidée &amp; suivi vidéo"><span class="animation-icon" aria-hidden="true"></span>Animation</button></div>
+    </div>
     <p class="project-context">CentraleSupélec × Safran · Jan.–Juin 2024</p>
     <h3>Segmentation guidée &amp; suivi vidéo</h3>
     <p>Combiner YOLO et SAM pour l’annotation interactive et le suivi à identifiants persistants.</p>
     <button class="text-button js-only" type="button" data-project="segmentation">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
     <details class="fallback-details"><summary>Voir les détails</summary><p>Relier la détection et la segmentation d’objets à une annotation guidée par points et à un suivi vidéo cohérent.</p><ul class="bullet-list"><li>Fine-tuning et benchmark de YOLOv5 et YOLOv8 sur KITTI et sur des données de segmentation de fissures.</li><li>Évaluation de la précision, du rappel, du F1 et de la qualité des masques.</li><li>Association de YOLOv8 aux encodeurs d’images, de prompts et de masques de SAM.</li><li>Annotation guidée par points et suivi vidéo avec identifiants persistants.</li></ul><p>Un pipeline qui relie plusieurs modèles de vision à une tâche d’annotation et de suivi concrète.</p></details>
   </article><article class="project-card reveal" data-project-card data-category="ml" data-extra="true" id="project-recommendation">
+    <div class="project-animation js-only">
+      <canvas id="scene-recommendation" data-project-scene="recommendation" width="440" height="184" role="img" aria-label="Connexions entre un profil et des films similaires">Connexions entre un profil et des films similaires</canvas>
+      <div class="project-animation-footer"><span>Illustration du concept</span><button type="button" class="animation-toggle" data-animation-toggle aria-controls="scene-recommendation" aria-pressed="false" aria-label="Animer : Recommandation de films"><span class="animation-icon" aria-hidden="true"></span>Animation</button></div>
+    </div>
     <p class="project-context">CentraleSupélec × Theodo · Mai 2024</p>
     <h3>Recommandation de films</h3>
     <p>Un système de recommandation intégré à une plateforme web.</p>
     <button class="text-button js-only" type="button" data-project="recommendation">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
     <details class="fallback-details"><summary>Voir les détails</summary><p>Transformer un système de recommandation en une expérience utilisable, de la représentation des données à l’interface.</p><ul class="bullet-list"><li>Implémentation d’un système de recommandation et d’une plateforme React / Node.js.</li><li>Intégration de services via des API REST.</li><li>Étude des représentations latentes, des matrices creuses et des méthodes d’optimisation liées à la qualité de recommandation.</li></ul><p>Une expérience complète reliant modélisation, développement logiciel et interface utilisateur.</p></details>
   </article><article class="project-card reveal" data-project-card data-category="ml" data-extra="true" id="project-tweet-classification">
+    <div class="project-animation js-only">
+      <canvas id="scene-tweet-classification" data-project-scene="tweet-classification" width="440" height="184" role="img" aria-label="Du texte aux représentations puis à la classification">Du texte aux représentations puis à la classification</canvas>
+      <div class="project-animation-footer"><span>Illustration du concept</span><button type="button" class="animation-toggle" data-animation-toggle aria-controls="scene-tweet-classification" aria-pressed="false" aria-label="Animer : Classification de tweets à risque suicidaire"><span class="animation-icon" aria-hidden="true"></span>Animation</button></div>
+    </div>
     <p class="project-context">CentraleSupélec · Oct. 2023</p>
     <h3>Classification de tweets à risque suicidaire</h3>
     <p>Représentations textuelles et classification supervisée de tweets.</p>

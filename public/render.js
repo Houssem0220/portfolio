@@ -1,4 +1,5 @@
 import { profile, copy, projects, repositories, experiences } from './content.js';
+import { visualLabels } from './project-scenes.js';
 
 export const escapeHtml = (value) => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const e = escapeHtml;
@@ -20,6 +21,10 @@ export function projectDetails(project, lang) {
 function projectCard(project, lang, index) {
   const t = copy[lang];
   return `<article class="project-card reveal" data-project-card data-category="${project.category}" data-extra="${index > 3}" id="project-${project.id}">
+    <div class="project-animation js-only">
+      <canvas id="scene-${project.id}" data-project-scene="${project.id}" width="440" height="184" role="img" aria-label="${e(visualLabels[project.id][lang])}">${e(visualLabels[project.id][lang])}</canvas>
+      <div class="project-animation-footer"><span>${lang === 'fr' ? 'Illustration du concept' : 'Concept illustration'}</span><button type="button" class="animation-toggle" data-animation-toggle aria-controls="scene-${project.id}" aria-pressed="false" aria-label="${e(`${lang === 'fr' ? 'Animer' : 'Animate'} : ${project.title[lang]}`)}"><span class="animation-icon" aria-hidden="true"></span>Animation</button></div>
+    </div>
     <p class="project-context">${e(project.organization)} · ${e(project.date[lang])}</p>
     <h3>${e(project.title[lang])}</h3>
     <p>${e(project.summary[lang])}</p>

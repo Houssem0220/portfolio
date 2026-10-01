@@ -1,6 +1,7 @@
 import { copy, profile, projects } from './content.js';
 import { renderSite, projectDetails } from './render.js';
 import { MeshScene } from './mesh.js';
+import { ProjectScene } from './project-scenes.js';
 const app=document.getElementById('app');
 let lang='fr',activeFilter='all',expanded=false,scenes=[],controller,revealObserver,navObserver,opener,savedLang;
 try{savedLang=localStorage.getItem('portfolio-language');}catch{}
@@ -31,6 +32,7 @@ function mount(nextLang=lang){
   dialog.addEventListener('close',()=>opener?.focus({preventScroll:true}),options);
   document.getElementById('copy-email').addEventListener('click',async()=>{const status=document.getElementById('copy-status');try{await navigator.clipboard.writeText(profile.email);status.textContent=t.copied;}catch{status.textContent=t.copyFailed;const range=document.createRange();range.selectNodeContents(document.querySelector('.email-link'));const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);}},options);
   const heroScene=new MeshScene(document.getElementById('hero-mesh')),featureScene=new MeshScene(document.getElementById('feature-mesh'),'tetra');scenes=[heroScene,featureScene];
+  for(const canvas of document.querySelectorAll('[data-project-scene]'))scenes.push(new ProjectScene(canvas,canvas.parentElement.querySelector('[data-animation-toggle]')));
   const rotateButton=document.querySelector('[data-rotation="hero"]'),rotateCheck=document.querySelector('[data-rotation="feature"]');rotateButton.setAttribute('aria-pressed',String(heroScene.playing));rotateCheck.checked=featureScene.playing;
   rotateButton.addEventListener('click',()=>{heroScene.setPlaying(!heroScene.playing);rotateButton.setAttribute('aria-pressed',String(heroScene.playing));},options);
   rotateCheck.addEventListener('change',()=>featureScene.setPlaying(rotateCheck.checked),options);
