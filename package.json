@@ -1,0 +1,12 @@
+{
+  "name": "houssem-guermazi-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portfolio de recherche et d'ingénierie ML — Houssem Guermazi",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs"
+  }
+}

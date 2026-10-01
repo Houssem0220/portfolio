@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Houssem Guermazi — Recherche & ingénierie ML</title>
+  <meta name="description" content="Portfolio de Houssem Guermazi : CentraleSupélec, master MVA à l’ENS Paris-Saclay, NUS Singapore. Recherche en machine learning, systèmes d’inférence, calcul GPU et vision.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Houssem Guermazi — Recherche & ingénierie ML">
+  <meta property="og:description" content="Portfolio de Houssem Guermazi : CentraleSupélec, master MVA à l’ENS Paris-Saclay, NUS Singapore. Recherche en machine learning, systèmes d’inférence, calcul GPU et vision.">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Houssem Guermazi","description":"Portfolio de Houssem Guermazi : CentraleSupélec, master MVA à l’ENS Paris-Saclay, NUS Singapore. Recherche en machine learning, systèmes d’inférence, calcul GPU et vision.","email":"houssem.guermazi@student-cs.fr","sameAs":["https://github.com/Houssem0220","https://www.linkedin.com/in/houssem-guermazi/"],"knowsLanguage":["French","English","Arabic","German"],"affiliation":[{"@type":"EducationalOrganization","name":"CentraleSupélec"},{"@type":"EducationalOrganization","name":"ENS Paris-Saclay"}]}</script>
+  <script type="module" src="./app.js"></script>
+</head>
+<body><div id="app"><a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="wordmark" href="#top" aria-label="Houssem Guermazi">houssem<span>.</span></a>
+      <nav id="main-nav" aria-label="Navigation principale">
+        <a href="#projects">Projets</a><a href="#experience">Expériences</a><a href="#education">Parcours</a>
+      </nav>
+      <div class="header-actions">
+        <div class="language-switch js-only" aria-label="Langue">
+          <button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true">FR</button><span aria-hidden="true">/</span><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
+        </div>
+        <a class="button button-dark header-contact" href="#contact">Contact</a>
+        <button class="menu-toggle js-only" type="button" aria-expanded="false" aria-controls="main-nav">Menu<span aria-hidden="true" class="menu-lines"></span></button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero container" id="top" aria-labelledby="hero-name">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-name">Houssem<br>Guermazi<span>.</span></h1>
+          <p class="hero-tagline">Construire. Comprendre.<br>Faire avancer le ML.</p>
+          <p class="hero-intro">Élève-ingénieur à CentraleSupélec et étudiant du master MVA à l’ENS Paris-Saclay. Je m’intéresse aux modèles, à leur évaluation et aux systèmes qui les rendent efficaces.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#projects">Explorer mes projets</a><a class="button button-outline" href="#contact">Me contacter</a></div>
+          <p class="availability">Stage de recherche · Avril 2027</p>
+        </div>
+        <div class="hero-visual">
+          <canvas id="hero-mesh" role="img" tabindex="0" aria-label="Maillage géométrique interactif. Utilisez les flèches du clavier pour le faire tourner." width="620" height="620">Maillage géométrique interactif. Utilisez les flèches du clavier pour le faire tourner.</canvas>
+          <div class="mesh-controls js-only"><button class="mini-button" type="button" data-rotation="hero" aria-pressed="true">Rotation</button><button class="mini-button" type="button" data-point-mode aria-pressed="false">Points</button></div>
+        </div>
+      </div>
+      <div class="academic-rail">
+        <a href="#education"><strong>CentraleSupélec</strong><span>Ingénieur · 2023–2027</span></a>
+        <a href="#education"><strong>MVA / ENS Paris-Saclay</strong><span>Master recherche · 2026–2027</span></a>
+        <a href="#singapore"><strong>NUS · Singapore</strong><span>Échange · Jan.–Mai 2025</span></a>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-heading reveal"><div><p class="section-index">01 / PROJETS</p><h2 id="projects-heading">De la théorie<br>à l’expérimentation.</h2></div><p class="section-lead">Des projets en apprentissage automatique, en vision et en calcul scientifique.</p></div>
+        <div class="project-toolbar js-only"><div class="filters" role="group" aria-label="Filtrer les projets"><button type="button" data-filter="all" aria-pressed="true">Tous</button><button type="button" data-filter="ml" aria-pressed="false">ML & vision</button><button type="button" data-filter="systems" aria-pressed="false">GPU & systèmes</button><button type="button" data-filter="open" aria-pressed="false">Open source</button></div><span id="project-count" class="sr-only" role="status" aria-live="polite"></span></div>
+        <article class="featured-project reveal" data-project-card data-category="systems" id="project-delaunay">
+          <div class="feature-visual">
+            <div class="feature-canvas-wrap"><canvas id="feature-mesh" role="img" tabindex="0" width="360" height="360" aria-label="Maillage géométrique interactif. Utilisez les flèches du clavier pour le faire tourner.">Maillage géométrique interactif. Utilisez les flèches du clavier pour le faire tourner.</canvas><span class="canvas-caption">Géométrie illustrative</span></div>
+            <div class="feature-controls js-only"><fieldset><legend>Affichage</legend><label><input type="radio" name="mesh-display" value="faces" checked>Tétraèdres</label><label><input type="radio" name="mesh-display" value="edges" >Arêtes</label><label><input type="radio" name="mesh-display" value="points" >Sommets</label></fieldset><label class="rotation-check"><input type="checkbox" data-rotation="feature" checked>Rotation auto</label></div>
+          </div>
+          <div class="feature-copy"><p class="project-context">MICS × Safran · Sept. 2026</p><h3>Tétraédralisation de Delaunay 3D sur GPU</h3><p>Comparer les méthodes CPU et GPU, mesurer leur passage à l’échelle et vérifier la robustesse géométrique.</p><ul class="tags" aria-label="Technologies"><li>Python</li><li>NVIDIA A100</li><li>Calcul parallèle</li></ul><button class="button button-primary js-only" type="button" data-project="delaunay">Voir le projet</button><details class="fallback-details"><summary>Voir les détails</summary><ul class="bullet-list"><li>Étude empirique de sept algorithmes CPU/GPU sur des nuages allant jusqu’à un million de points, avec une NVIDIA A100.</li><li>Comparaison des performances, de la scalabilité et de la robustesse numérique.</li><li>Validation par prédicats géométriques robustes, couverture de l’enveloppe convexe, cohérence des volumes et similarité de Jaccard.</li><li>Étude de l’effet d’un jitter contrôlé sur les cas dégénérés et le recours à l’arithmétique exacte.</li></ul><p>Une démarche de benchmarking reproductible qui examine conjointement vitesse, validité géométrique et comportement numérique.</p></details></div>
+        </article>
+        <div class="project-grid"><article class="project-card reveal" data-project-card data-category="ml" data-extra="false" id="project-trustworthy-ai">
+    <p class="project-context">CISPA · Nov. 2025</p>
+    <h3>IA de confiance</h3>
+    <p>3e sur 16 équipes · Qualification pour la finale européenne.</p>
+    <button class="text-button js-only" type="button" data-project="trustworthy-ai">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
+    <details class="fallback-details"><summary>Voir les détails</summary><p>Évaluer la robustesse de classifieurs cachés et identifier l’origine de contenus générés lors du hackathon CISPA Paris Cybersecurity &amp; AI.</p><ul class="bullet-list"><li>Attaques adversariales black-box à faible perturbation L2, à partir d’ensembles de modèles CNN et ViT.</li><li>Variantes de PGD, transfert d’attaques et calibration des perturbations par recherche binaire.</li><li>Attribution de modèles génératifs à partir d’erreurs de reconstruction de plusieurs autoencodeurs.</li><li>Fine-tuning d’un ResNet-50 pour la détection de filigranes, avec calibration ROC à 1 % de faux positifs.</li></ul><p>Une expérience de recherche en équipe, combinant robustesse adversariale, expérimentation rapide et évaluation sous contraintes.</p></details>
+  </article><article class="project-card reveal" data-project-card data-category="ml" data-extra="false" id="project-forecasting">
+    <p class="project-context">NUS · Jan.–Mai 2025</p>
+    <h3>Prévision multimodale de séries temporelles</h3>
+    <p>Seq2Seq, LSTM et cross-attention pour la prévision du box-office.</p>
+    <button class="text-button js-only" type="button" data-project="forecasting">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
+    <details class="fallback-details"><summary>Voir les détails</summary><p>Prévoir plusieurs horizons de revenus en combinant leur historique avec des caractéristiques numériques, catégorielles et temporelles.</p><ul class="bullet-list"><li>Conception d’un encodeur-décodeur LSTM fusionnant les séries historiques, les variables statiques et des embeddings catégoriels.</li><li>Cross-attention multi-têtes entre les requêtes du décodeur et les états de l’encodeur.</li><li>Connexions résiduelles, layer normalization, dropout et tête de prédiction feedforward.</li><li>Sélection de retards par ACF/PACF, encodages cycliques et statistiques en fenêtres glissantes.</li></ul><p>34,51 % de MdAPE sur le jeu de test du projet. Une étude du lien entre représentation temporelle, fusion de modalités et qualité de prévision.</p></details>
+  </article><article class="project-card reveal" data-project-card data-category="ml" data-extra="false" id="project-fashion-retrieval">
+    <p class="project-context">CentraleSupélec × QuickFind · Sept.–Déc. 2024</p>
+    <h3>Recherche visuelle de mode</h3>
+    <p>ViT, SwinV2 et apprentissage métrique pour retrouver des images similaires.</p>
+    <button class="text-button js-only" type="button" data-project="fashion-retrieval">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
+    <details class="fallback-details"><summary>Voir les détails</summary><p>Construire un espace de représentation qui rapproche les vêtements visuellement similaires et sépare les exemples moins pertinents.</p><ul class="bullet-list"><li>Conception et fine-tuning d’une architecture à poids partagés pour des triplets anchor / positive / negative.</li><li>Optimisation avec une triplet-margin loss et recherche par similarité cosinus.</li><li>Comparaison de l’attention globale de ViT et de l’attention hiérarchique à fenêtres décalées de SwinV2.</li><li>Benchmark face à Jina CLIP à l’aide de distributions de distances, de projections t-SNE et d’attributs visuels définis avec le partenaire.</li></ul><p>Une exploration de la qualité des embeddings et des critères d’évaluation d’un moteur de recherche visuelle.</p></details>
+  </article><article class="project-card reveal" data-project-card data-category="ml" data-extra="false" id="project-reinforcement-learning">
+    <p class="project-context">NUS · Jan.–Mai 2025</p>
+    <h3>Contrôle par renforcement</h3>
+    <p>Apprentissage d’une politique DQN pour équilibrer un pendule inversé dans CartPole.</p>
+    <button class="text-button js-only" type="button" data-project="reinforcement-learning">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
+    <details class="fallback-details"><summary>Voir les détails</summary><p>Apprendre une politique de contrôle par interaction avec un environnement simulé plutôt que par programmation explicite de chaque action.</p><ul class="bullet-list"><li>Implémentation d’un agent Deep Q-Network pour l’environnement CartPole.</li><li>Experience replay pour réutiliser les transitions collectées.</li><li>Exploration ε-greedy et mises à jour par différence temporelle.</li></ul><p>Une mise en pratique des mécanismes fondamentaux de l’apprentissage par renforcement pour le contrôle non linéaire.</p></details>
+  </article><article class="project-card reveal" data-project-card data-category="ml" data-extra="true" id="project-segmentation">
+    <p class="project-context">CentraleSupélec × Safran · Jan.–Juin 2024</p>
+    <h3>Segmentation guidée &amp; suivi vidéo</h3>
+    <p>Combiner YOLO et SAM pour l’annotation interactive et le suivi à identifiants persistants.</p>
+    <button class="text-button js-only" type="button" data-project="segmentation">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
+    <details class="fallback-details"><summary>Voir les détails</summary><p>Relier la détection et la segmentation d’objets à une annotation guidée par points et à un suivi vidéo cohérent.</p><ul class="bullet-list"><li>Fine-tuning et benchmark de YOLOv5 et YOLOv8 sur KITTI et sur des données de segmentation de fissures.</li><li>Évaluation de la précision, du rappel, du F1 et de la qualité des masques.</li><li>Association de YOLOv8 aux encodeurs d’images, de prompts et de masques de SAM.</li><li>Annotation guidée par points et suivi vidéo avec identifiants persistants.</li></ul><p>Un pipeline qui relie plusieurs modèles de vision à une tâche d’annotation et de suivi concrète.</p></details>
+  </article><article class="project-card reveal" data-project-card data-category="ml" data-extra="true" id="project-recommendation">
+    <p class="project-context">CentraleSupélec × Theodo · Mai 2024</p>
+    <h3>Recommandation de films</h3>
+    <p>Un système de recommandation intégré à une plateforme web.</p>
+    <button class="text-button js-only" type="button" data-project="recommendation">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
+    <details class="fallback-details"><summary>Voir les détails</summary><p>Transformer un système de recommandation en une expérience utilisable, de la représentation des données à l’interface.</p><ul class="bullet-list"><li>Implémentation d’un système de recommandation et d’une plateforme React / Node.js.</li><li>Intégration de services via des API REST.</li><li>Étude des représentations latentes, des matrices creuses et des méthodes d’optimisation liées à la qualité de recommandation.</li></ul><p>Une expérience complète reliant modélisation, développement logiciel et interface utilisateur.</p></details>
+  </article><article class="project-card reveal" data-project-card data-category="ml" data-extra="true" id="project-tweet-classification">
+    <p class="project-context">CentraleSupélec · Oct. 2023</p>
+    <h3>Classification de tweets à risque suicidaire</h3>
+    <p>Représentations textuelles et classification supervisée de tweets.</p>
+    <button class="text-button js-only" type="button" data-project="tweet-classification">Voir le projet<span class="plus" aria-hidden="true">+</span></button>
+    <details class="fallback-details"><summary>Voir les détails</summary><p>Étudier comment des représentations textuelles permettent de classifier des tweets dans un projet académique de détection de risque suicidaire.</p><ul class="bullet-list"><li>Prétraitement NLP et construction de variables textuelles.</li><li>Représentations Word2Vec et TF-IDF.</li><li>Classification par Random Forest et évaluation des prédictions.</li></ul><p>90 % d’accuracy dans l’évaluation du projet, avec une attention portée au prétraitement et à la représentation des textes.</p></details>
+  </article></div>
+        <div class="more-projects js-only"><p>Et aussi : segmentation & suivi vidéo · recommandation de films · classification de tweets.</p><button type="button" class="button button-outline" id="show-all-projects" aria-expanded="false">Tous les projets</button></div>
+        <aside class="open-source reveal" data-open-source aria-labelledby="open-heading">
+          <div><h3 id="open-heading">Open source</h3><p>Des outils Python pour le traitement de documents.</p><a class="text-link" href="https://github.com/Houssem0220?tab=repositories" target="_blank" rel="noopener noreferrer">Tous mes dépôts</a></div>
+          <div class="repo-list"><a class="github-profile" href="https://github.com/Houssem0220" target="_blank" rel="noopener noreferrer">GitHub / Houssem0220</a><a class="repo-row" href="https://github.com/Houssem0220/footnote-docx" target="_blank" rel="noopener noreferrer"><strong>footnote-docx</strong><span>Notes de bas de page et notes de fin natives dans Word, en Python.</span><span class="repo-action">Voir sur GitHub</span></a><a class="repo-row" href="https://github.com/Houssem0220/python-docx-cleaner" target="_blank" rel="noopener noreferrer"><strong>python-docx-cleaner</strong><span>Nettoyage de documents Word et suppression d’artefacts XML.</span><span class="repo-action">Voir sur GitHub</span></a></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container" id="experience" aria-labelledby="experience-heading">
+      <div class="experience-layout"><div class="experience-heading reveal"><p class="section-index">02 / EXPÉRIENCES</p><h2 id="experience-heading">La recherche,<br>au contact du réel.</h2><p class="section-lead">Expérimenter, évaluer, puis construire des systèmes utilisables.</p></div><div class="experience-list"><article class="experience-item reveal"><div class="experience-title"><h3>BNP Paribas Innovation Lab</h3><span class="date">JAN. — JUIL. 2026</span></div><p class="role">R&D / AI Intern</p><p>Systèmes d’inférence multi-LLM, recherche documentaire hybride et évaluation de la factualité.</p><ul class="bullet-list"><li>Passerelle d’inférence compatible OpenAI sur Azure.</li><li>Routage de modèles, répartition de charge et contrôle de capacité.</li><li>Évaluation des affirmations à partir des documents sources.</li></ul><details><summary>Voir les détails<span class="plus" aria-hidden="true">+</span></summary><ul class="bullet-list"><li>Adaptateurs de schémas JSON propres aux modèles, sérialisation des appels d’outils et configuration du raisonnement.</li><li>Recherche hybride BM25 + recherche sémantique dense sur ChromaDB.</li><li>Évaluation de factualité par plusieurs juges LLM, avec un seuil de consensus de 80 %.</li><li>Conception d’un système LangChain / LangGraph pour la génération de communiqués financiers à partir de 300 à 600 documents Word, avec des boucles de vérification.</li></ul></details></article><article class="experience-item reveal"><div class="experience-title"><h3>SFR</h3><span class="date">JUIL. — DÉC. 2025</span></div><p class="role">Data Scientist</p><p>Détection de fraude à grande échelle, représentations visuelles et apprentissage sur graphes.</p><ul class="bullet-list"><li>Gestion du déséquilibre des classes et optimisation des seuils.</li><li>Embeddings de réseaux neuronaux avec XGBoost et Random Forest.</li><li>Généralisation à de nouvelles entités et à de nouveaux schémas de fraude.</li></ul><details><summary>Voir les détails<span class="plus" aria-hidden="true">+</span></summary><ul class="bullet-list"><li>Échantillonnage stratifié et pondération des classes dans les pipelines de détection.</li><li>Pipelines hybrides combinant des représentations de réseaux neuronaux et de Vision Transformers avec des modèles tabulaires.</li><li>Modélisation des interactions sous forme de graphes, échantillonnage de voisinages et étude de la scalabilité.</li><li>Développement sur Vertex AI de systèmes spécialisés en NLP et recherche documentaire.</li></ul></details></article></div></div>
+      <div class="skills reveal"><h2>Une boîte à outils,<br>pour explorer et construire.</h2><div class="skill-grid"><div><h3>Modèles & évaluation</h3><p>PyTorch, scikit-learn, Transformers, ViT, Swin Transformer, ResNet, graph learning et évaluation expérimentale.</p></div><div><h3>Calcul & systèmes</h3><p>Python, NumPy, SciPy, SLURM, calcul parallèle, analyse de scalabilité, Azure et GCP Vertex AI.</p></div><div><h3>Du prototype au produit</h3><p>FastAPI, Docker, Git, React, Node.js, API REST, model serving, routage et répartition de charge.</p></div></div></div>
+    </section>
+
+    <section class="section education-section" id="education" aria-labelledby="education-heading"><div class="container"><div class="reveal"><p class="section-index">03 / PARCOURS</p><h2 id="education-heading">Deux parcours.<br>Une même curiosité.</h2></div><div class="education-grid">
+      <article class="education-item reveal"><h3>CentraleSupélec</h3><p class="education-degree">Diplôme d’ingénieur · 2023–2027</p><p>Une formation en mathématiques appliquées, intelligence artificielle et ingénierie, avec une place centrale pour l’expérimentation.</p><div class="gpa">1re année : 4,23 / 4,33<br>2e année : 4,03 / 4,33</div></article>
+      <article class="education-item reveal"><h3>MVA</h3><p class="education-degree">ENS Paris-Saclay · 2026–2027</p><p>Un master de recherche en Mathematics, Vision and Learning, consacré à l’apprentissage moderne, à l’optimisation à grande échelle et aux modèles de fondation.</p></article>
+    </div><p class="prep-line reveal">IPEST · MPSI / PSI* · 2021–2023 · Mathématiques & physique · Tunisie</p></div></section>
+
+    <section class="singapore" id="singapore" aria-labelledby="singapore-heading"><div class="container singapore-grid">
+      <div class="singapore-left reveal"><p class="singapore-word">Singapore<span>.</span></p><p class="nus-name">National University of Singapore</p><p>Janvier–mai 2025</p><div class="singapore-coordinate" aria-hidden="true"><span>PARIS</span><span class="route-line"><i></i></span><span>SINGAPORE</span></div></div>
+      <div class="singapore-copy reveal"><h2 id="singapore-heading">Un semestre,<br>un autre terrain d’exploration.</h2><p>Un échange à la National University of Singapore pour approfondir l’apprentissage automatique et mettre la théorie à l’épreuve dans des projets de prévision et de contrôle.</p><p class="gpa">GPA : 4,0 / 4,0</p><p class="course-list">Advanced Deep Learning · Reinforcement Learning · Fundamentals of Machine Learning</p><div class="nus-projects"><h3>Projets académiques</h3><a href="#project-forecasting" class="text-link" data-project="forecasting">Prévision de séries temporelles</a><a href="#project-reinforcement-learning" class="text-link" data-project="reinforcement-learning">Contrôle par renforcement</a></div></div>
+    </div></section>
+  </main>
+
+  <footer id="contact" class="contact-section"><div class="container"><div class="contact-grid"><div class="reveal"><h2>Et si on travaillait<br>ensemble ?</h2><p>Stage de fin d’études à forte composante recherche · À partir d’avril 2027</p></div><div class="contact-actions reveal"><p class="footer-label">Me contacter</p><a class="email-link" href="mailto:houssem.guermazi@student-cs.fr">houssem.guermazi@student-cs.fr</a><button type="button" id="copy-email" class="button button-light-outline js-only">Copier l’adresse</button><p id="copy-status" role="status" aria-live="polite"></p><p class="footer-label">Retrouver mon travail</p><div class="social-links"><a href="https://github.com/Houssem0220" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/houssem-guermazi/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div></div><div class="footer-bottom"><a href="#top">Houssem Guermazi</a><p>Français C2 · English C1 · العربية · Deutsch B2</p></div></div></footer>
+  <dialog id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span>Projets</span><button type="button" class="dialog-close" aria-label="Fermer">Fermer <span aria-hidden="true">×</span></button></div><div id="dialog-content"></div></dialog></div><noscript><p class="noscript-notice">Le contenu reste accessible sans JavaScript. Activez-le pour les animations, les filtres et la version anglaise.</p></noscript></body>
+</html>
