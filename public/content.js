@@ -87,7 +87,7 @@ export const copy = {
 
 export const projects = [
   {
-    id: 'delaunay', category: 'systems', featured: true,
+    id: 'delaunay', category: 'systems',
     organization: 'MICS × Safran', date: {fr: 'Sept. 2026', en: 'Sept. 2026'},
     tags: ['Python', 'NVIDIA A100', 'CPU / GPU', 'Geometric predicates'],
     title: {fr: 'Tétraédralisation de Delaunay 3D sur GPU', en: 'GPU-accelerated 3D Delaunay tetrahedralization'},
@@ -109,7 +109,7 @@ export const projects = [
     takeaway: {fr: 'Une expérience de recherche en équipe, combinant robustesse adversariale, expérimentation rapide et évaluation sous contraintes.', en: 'Team-based research combining adversarial robustness, rapid experimentation and evaluation under constraints.'},
   },
   {
-    id: 'forecasting', category: 'ml', organization: 'NUS', date: {fr: 'Jan.–Mai 2025', en: 'Jan.–May 2025'},
+    id: 'forecasting', category: 'ml', featured: true, organization: 'NUS', date: {fr: 'Jan.–Mai 2025', en: 'Jan.–May 2025'},
     tags: ['LSTM', 'Seq2Seq', 'Cross-attention', 'Time series'],
     title: {fr: 'Prévision multimodale de séries temporelles', en: 'Multimodal time-series forecasting'},
     summary: {fr: 'Seq2Seq, LSTM et cross-attention pour la prévision du box-office.', en: 'Seq2Seq, LSTM and cross-attention for box-office forecasting.'},

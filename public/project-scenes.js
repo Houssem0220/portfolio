@@ -1,7 +1,8 @@
 // Concept illustrations only: these animations do not display project results.
+import { drawForecasting } from './forecasting-scene.js';
 export const visualLabels = {
   'trustworthy-ai': {fr: 'Perturbations autour d’une frontière de classification', en: 'Perturbations around a classification boundary'},
-  forecasting: {fr: 'Série temporelle et horizons de prévision', en: 'Time series and forecast horizons'},
+  forecasting: {fr: 'Architecture du rapport BT4222 : historique vers LSTM encodeur ; fusion avec les variables numériques et embeddings catégoriels pour initialiser le LSTM décodeur. Entrées futures et position vers le décodeur. Cross-attention : Q du décodeur, K et V de l’encodeur, puis connexion résiduelle, LayerNorm et feedforward pour prédire les revenus quotidiens.', en: 'BT4222 report architecture: history enters the encoder LSTM; fusion with numerical features and categorical embeddings initializes the decoder LSTM. Future inputs and position enter the decoder. Cross-attention uses decoder Q and encoder K/V, followed by a residual connection, LayerNorm and feedforward daily revenue predictions.'},
   'fashion-retrieval': {fr: 'Recherche de vêtements proches dans un espace de représentation', en: 'Finding similar clothing in an embedding space'},
   'reinforcement-learning': {fr: 'Équilibrage d’un pendule inversé sur un chariot', en: 'Balancing an inverted pendulum on a cart'},
   segmentation: {fr: 'Masques et identifiants suivant des objets en mouvement', en: 'Masks and identifiers following moving objects'},
@@ -54,20 +55,7 @@ const drawings = {
     ctx.beginPath();ctx.arc(x,y,19,0,Math.PI*2);ctx.strokeStyle=blue;ctx.lineWidth=1;ctx.stroke();
     dot(ctx,x,y,4);
   },
-  forecasting(ctx,t) {
-    grid(ctx);
-    const wave=x=>104-24*Math.sin(x*.034)-12*Math.cos(x*.081)-x*.045;
-    const points=Array.from({length:91},(_,i)=>{const x=40+i*4;return [x,wave(x)];});
-    const horizon=250+Math.sin(t*.55)*25;
-    path(ctx,points.filter(([x])=>x<=horizon),blue,2);
-    const forecast=points.filter(([x])=>x>=horizon);
-    ctx.beginPath();
-    forecast.forEach(([x,y],i)=>{const spread=(x-horizon)*.18+3;i?ctx.lineTo(x,y-spread):ctx.moveTo(x,y-spread);});
-    [...forecast].reverse().forEach(([x,y])=>ctx.lineTo(x,y+(x-horizon)*.18+3));
-    ctx.closePath();ctx.fillStyle='#245dff12';ctx.fill();
-    ctx.setLineDash([4,4]);path(ctx,forecast,blue,1.6);path(ctx,[[horizon,24],[horizon,164]],pale);ctx.setLineDash([]);
-    dot(ctx,horizon,wave(horizon),4);
-  },
+  forecasting: drawForecasting,
   'fashion-retrieval'(ctx,t) {
     shirt(ctx,77,88,1.3,true);
     path(ctx,[[124,90],[166,90]],pale); pulse(ctx,[124,90],[166,90],(t*.3)%1);
@@ -118,6 +106,7 @@ const drawings = {
 export class ProjectScene {
   constructor(canvas,button) {
     this.canvas=canvas;this.button=button;this.ctx=canvas.getContext('2d');
+    this.sceneWidth=canvas.width;this.sceneHeight=canvas.height;
     this.drawScene=drawings[canvas.dataset.projectScene];this.time=0;this.visible=false;this.frame=0;
     this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
     this.playing=!this.reduced.matches;
@@ -139,10 +128,10 @@ export class ProjectScene {
   }
   draw() {
     if(!this.ctx||!this.width||!this.height)return;
-    const ctx=this.ctx,scale=Math.min(this.width/440,this.height/184);
+    const ctx=this.ctx,scale=Math.min(this.width/this.sceneWidth,this.height/this.sceneHeight);
     ctx.setTransform(this.ratio,0,0,this.ratio,0,0);ctx.clearRect(0,0,this.width,this.height);
-    ctx.translate((this.width-440*scale)/2,(this.height-184*scale)/2);ctx.scale(scale,scale);
-    this.drawScene(ctx,this.time);
+    ctx.translate((this.width-this.sceneWidth*scale)/2,(this.height-this.sceneHeight*scale)/2);ctx.scale(scale,scale);
+    this.drawScene(ctx,this.time,this.canvas.dataset.lang);
   }
   schedule() {
     cancelAnimationFrame(this.frame);

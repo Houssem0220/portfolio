@@ -18,13 +18,26 @@ export function projectDetails(project, lang) {
     <a class="button button-primary" href="mailto:${profile.email}?subject=${encodeURIComponent(`Projet : ${project.title[lang]}`)}">${t.discuss}</a>`;
 }
 
+function projectAnimation(project, lang) {
+  const architecture = project.id === 'forecasting';
+  return `<div class="project-animation ${architecture ? 'architecture-animation' : ''} js-only">
+    <canvas id="scene-${project.id}" data-project-scene="${project.id}" data-lang="${lang}" width="${architecture ? 400 : 440}" height="${architecture ? 610 : 184}" role="img" aria-label="${e(visualLabels[project.id][lang])}">${e(visualLabels[project.id][lang])}</canvas>
+    <div class="project-animation-footer"><span>${architecture ? (lang === 'fr' ? 'Architecture · fig. 3–5 du rapport' : 'Architecture · report fig. 3–5') : (lang === 'fr' ? 'Illustration du concept' : 'Concept illustration')}</span><button type="button" class="animation-toggle" data-animation-toggle aria-controls="scene-${project.id}" aria-pressed="false" aria-label="${e(`${lang === 'fr' ? 'Animer' : 'Animate'} : ${project.title[lang]}`)}"><span class="animation-icon" aria-hidden="true"></span>Animation</button></div>
+  </div>`;
+}
+
+function delaunayVisual(lang) {
+  const t = copy[lang];
+  return `<div class="feature-visual delaunay-visual">
+    <div class="feature-canvas-wrap"><canvas id="feature-mesh" role="img" tabindex="0" width="360" height="360" aria-label="${t.canvasLabel}">${t.canvasLabel}</canvas><span class="canvas-caption">${t.illustrative}</span></div>
+    <div class="feature-controls js-only"><fieldset><legend>${t.display}</legend>${[['faces', t.tetra], ['edges', t.edges], ['points', t.vertices]].map(([key,label]) => `<label><input type="radio" name="mesh-display" value="${key}" ${key === 'faces' ? 'checked' : ''}>${label}</label>`).join('')}</fieldset><label class="rotation-check"><input type="checkbox" data-rotation="feature" checked>${t.auto}</label></div>
+  </div>`;
+}
+
 function projectCard(project, lang, index) {
   const t = copy[lang];
   return `<article class="project-card reveal" data-project-card data-category="${project.category}" data-extra="${index > 3}" id="project-${project.id}">
-    <div class="project-animation js-only">
-      <canvas id="scene-${project.id}" data-project-scene="${project.id}" width="440" height="184" role="img" aria-label="${e(visualLabels[project.id][lang])}">${e(visualLabels[project.id][lang])}</canvas>
-      <div class="project-animation-footer"><span>${lang === 'fr' ? 'Illustration du concept' : 'Concept illustration'}</span><button type="button" class="animation-toggle" data-animation-toggle aria-controls="scene-${project.id}" aria-pressed="false" aria-label="${e(`${lang === 'fr' ? 'Animer' : 'Animate'} : ${project.title[lang]}`)}"><span class="animation-icon" aria-hidden="true"></span>Animation</button></div>
-    </div>
+    ${project.id === 'delaunay' ? delaunayVisual(lang) : projectAnimation(project,lang)}
     <p class="project-context">${e(project.organization)} · ${e(project.date[lang])}</p>
     <h3>${e(project.title[lang])}</h3>
     <p>${e(project.summary[lang])}</p>
@@ -35,7 +48,7 @@ function projectCard(project, lang, index) {
 
 export function renderSite(lang = 'fr') {
   const t = copy[lang];
-  const featured = projects[0];
+  const featured = projects.find(project => project.featured);
   return `<a class="skip-link" href="#main">${t.skip}</a>
   <header class="site-header">
     <div class="container header-inner">
@@ -78,14 +91,11 @@ export function renderSite(lang = 'fr') {
       <div class="container">
         <div class="section-heading reveal"><div><p class="section-index">${t.projectIndex}</p><h2 id="projects-heading">${lines(t.projectTitle)}</h2></div><p class="section-lead">${t.projectIntro}</p></div>
         <div class="project-toolbar js-only"><div class="filters" role="group" aria-label="${lang === 'fr' ? 'Filtrer les projets' : 'Filter projects'}">${t.filters.map(([key, label]) => `<button type="button" data-filter="${key}" aria-pressed="${key === 'all'}">${label}</button>`).join('')}</div><span id="project-count" class="sr-only" role="status" aria-live="polite"></span></div>
-        <article class="featured-project reveal" data-project-card data-category="systems" id="project-delaunay">
-          <div class="feature-visual">
-            <div class="feature-canvas-wrap"><canvas id="feature-mesh" role="img" tabindex="0" width="360" height="360" aria-label="${t.canvasLabel}">${t.canvasLabel}</canvas><span class="canvas-caption">${t.illustrative}</span></div>
-            <div class="feature-controls js-only"><fieldset><legend>${t.display}</legend>${[['faces', t.tetra], ['edges', t.edges], ['points', t.vertices]].map(([key,label]) => `<label><input type="radio" name="mesh-display" value="${key}" ${key === 'faces' ? 'checked' : ''}>${label}</label>`).join('')}</fieldset><label class="rotation-check"><input type="checkbox" data-rotation="feature" checked>${t.auto}</label></div>
-          </div>
-          <div class="feature-copy"><p class="project-context">${featured.organization} · ${featured.date[lang]}</p><h3>${featured.title[lang]}</h3><p>${featured.summary[lang]}</p>${tags(['Python', 'NVIDIA A100', lang === 'fr' ? 'Calcul parallèle' : 'Parallel computing'])}<button class="button button-primary js-only" type="button" data-project="delaunay">${t.view}</button><details class="fallback-details"><summary>${t.more}</summary>${list(featured.approach[lang])}<p>${e(featured.takeaway[lang])}</p></details></div>
+        <article class="featured-project forecasting-feature reveal" data-project-card data-category="${featured.category}" id="project-${featured.id}">
+          ${projectAnimation(featured,lang)}
+          <div class="feature-copy"><p class="featured-label">${lang === 'fr' ? 'PROJET À LA UNE' : 'FEATURED PROJECT'}</p><p class="project-context">${featured.organization} · ${featured.date[lang]}</p><h3>${featured.title[lang]}</h3><p>${featured.summary[lang]}</p><p class="architecture-explainer">${lang === 'fr' ? 'Suivez le chemin des données : fusion des métadonnées et de l’historique, initialisation du décodeur, cross-attention et prévision des revenus quotidiens.' : 'Follow the data: metadata and history fusion, decoder initialization, cross-attention, and daily revenue prediction.'}</p>${tags(featured.tags)}<button class="button button-primary js-only" type="button" data-project="${featured.id}">${t.view}</button><details class="fallback-details"><summary>${t.more}</summary>${list(featured.approach[lang])}<p>${e(featured.takeaway[lang])}</p></details></div>
         </article>
-        <div class="project-grid">${projects.slice(1).map((p,i) => projectCard(p,lang,i)).join('')}</div>
+        <div class="project-grid">${projects.filter(p => p !== featured).map((p,i) => projectCard(p,lang,i)).join('')}</div>
         <div class="more-projects js-only"><p>${t.also}</p><button type="button" class="button button-outline" id="show-all-projects" aria-expanded="false">${t.showAll}</button></div>
         <aside class="open-source reveal" data-open-source aria-labelledby="open-heading">
           <div><h3 id="open-heading">Open source</h3><p>${t.openIntro}</p><a class="text-link" href="${profile.github}?tab=repositories" target="_blank" rel="noopener noreferrer">${t.githubAll}</a></div>
