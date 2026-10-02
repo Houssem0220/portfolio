@@ -1,7 +1,8 @@
 // Concept illustrations only: these animations do not display project results.
 import { drawForecasting } from './forecasting-scene.js';
+import { drawCispa } from './cispa-scene.js';
 export const visualLabels = {
-  'trustworthy-ai': {fr: 'Perturbations autour d’une frontière de classification', en: 'Perturbations around a classification boundary'},
+  'trustworthy-ai': {fr: 'Trois méthodes CISPA : transfert d’attaques PGD depuis un ensemble CNN/ViT sous contrainte L₂ ; attribution par comparaison des erreurs de reconstruction d’autoencodeurs ; détection de filigranes avec ResNet-50 et calibration ROC à 1 % de faux positifs.', en: 'Three CISPA methods: L₂-constrained PGD attack transfer from CNN/ViT ensembles; attribution by comparing autoencoder reconstruction errors; ResNet-50 watermark detection with ROC calibration at a 1% false-positive rate.'},
   forecasting: {fr: 'Architecture du rapport BT4222 : historique vers LSTM encodeur ; fusion avec les variables numériques et embeddings catégoriels pour initialiser le LSTM décodeur. Entrées futures et position vers le décodeur. Cross-attention : Q du décodeur, K et V de l’encodeur, puis connexion résiduelle, LayerNorm et feedforward pour prédire les revenus quotidiens.', en: 'BT4222 report architecture: history enters the encoder LSTM; fusion with numerical features and categorical embeddings initializes the decoder LSTM. Future inputs and position enter the decoder. Cross-attention uses decoder Q and encoder K/V, followed by a residual connection, LayerNorm and feedforward daily revenue predictions.'},
   'fashion-retrieval': {fr: 'Recherche de vêtements proches dans un espace de représentation', en: 'Finding similar clothing in an embedding space'},
   'reinforcement-learning': {fr: 'Équilibrage d’un pendule inversé sur un chariot', en: 'Balancing an inverted pendulum on a cart'},
@@ -30,10 +31,6 @@ function label(ctx, text, x,y, color = '#626a78') {
 function pulse(ctx, a,b, progress) {
   dot(ctx,a[0]+(b[0]-a[0])*progress,a[1]+(b[1]-a[1])*progress,3.5);
 }
-function grid(ctx) {
-  for(let x=40;x<=400;x+=40) path(ctx,[[x,20],[x,164]],'#e5eaf3',.6);
-  for(let y=24;y<=164;y+=35) path(ctx,[[40,y],[400,y]],'#e5eaf3',.6);
-}
 function shirt(ctx,x,y,scale=1,selected=false) {
   ctx.save(); ctx.translate(x,y); ctx.scale(scale,scale);
   const outline=[[-12,-18],[-25,-8],[-17,3],[-11,-1],[-11,23],[11,23],[11,-1],[17,3],[25,-8],[12,-18],[6,-13],[-6,-13],[-12,-18]];
@@ -42,19 +39,7 @@ function shirt(ctx,x,y,scale=1,selected=false) {
 }
 
 const drawings = {
-  'trustworthy-ai'(ctx,t) {
-    grid(ctx);
-    path(ctx,[[190,18],[206,52],[224,78],[215,111],[238,166]],pale,1.6);
-    for(let i=0;i<36;i++) {
-      const side=i%2, x=(side?262:72)+(i*37%98), y=36+(i*29%113);
-      const dx=Math.sin(t*1.2+i)*7, dy=Math.cos(t+i)*5;
-      path(ctx,[[x,y],[x+dx,y+dy]],pale);
-      dot(ctx,x+dx,y+dy,side?3:2.5,side?blue:'#839bc8');
-    }
-    const x=202+Math.sin(t)*13,y=91+Math.cos(t*.8)*15;
-    ctx.beginPath();ctx.arc(x,y,19,0,Math.PI*2);ctx.strokeStyle=blue;ctx.lineWidth=1;ctx.stroke();
-    dot(ctx,x,y,4);
-  },
+  'trustworthy-ai': drawCispa,
   forecasting: drawForecasting,
   'fashion-retrieval'(ctx,t) {
     shirt(ctx,77,88,1.3,true);
@@ -111,6 +96,12 @@ export class ProjectScene {
     this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
     this.playing=!this.reduced.matches;
     this.events=new AbortController();const options={signal:this.events.signal};
+    this.mode='attack';
+    for(const control of canvas.parentElement.querySelectorAll('[data-scene-mode]'))control.addEventListener('click',()=>{
+      this.mode=control.dataset.sceneMode;this.time=0;
+      for(const item of canvas.parentElement.querySelectorAll('[data-scene-mode]'))item.setAttribute('aria-pressed',String(item===control));
+      this.draw();
+    },options);
     button.addEventListener('click',()=>this.setPlaying(!this.playing),options);
     this.reduced.addEventListener('change',()=>this.setPlaying(!this.reduced.matches),options);
     document.addEventListener('visibilitychange',()=>this.schedule(),options);
@@ -131,7 +122,7 @@ export class ProjectScene {
     const ctx=this.ctx,scale=Math.min(this.width/this.sceneWidth,this.height/this.sceneHeight);
     ctx.setTransform(this.ratio,0,0,this.ratio,0,0);ctx.clearRect(0,0,this.width,this.height);
     ctx.translate((this.width-this.sceneWidth*scale)/2,(this.height-this.sceneHeight*scale)/2);ctx.scale(scale,scale);
-    this.drawScene(ctx,this.time,this.canvas.dataset.lang);
+    this.drawScene(ctx,this.time,this.canvas.dataset.lang,this.mode);
   }
   schedule() {
     cancelAnimationFrame(this.frame);

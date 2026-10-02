@@ -20,8 +20,9 @@ export function projectDetails(project, lang) {
 
 function projectAnimation(project, lang) {
   const architecture = project.id === 'forecasting';
-  return `<div class="project-animation ${architecture ? 'architecture-animation' : ''} js-only">
-    <canvas id="scene-${project.id}" data-project-scene="${project.id}" data-lang="${lang}" width="${architecture ? 400 : 440}" height="${architecture ? 610 : 184}" role="img" aria-label="${e(visualLabels[project.id][lang])}">${e(visualLabels[project.id][lang])}</canvas>
+  const cispa = project.id === 'trustworthy-ai';
+  return `<div class="project-animation ${architecture ? 'architecture-animation' : ''} ${cispa ? 'cispa-animation' : ''} js-only">
+    ${cispa ? `<div class="scene-modes" role="group" aria-label="${lang === 'fr' ? 'Méthode illustrée' : 'Illustrated method'}">${[['attack',lang === 'fr' ? 'Transfert d’attaques' : 'Attack transfer'],['attribution','Attribution'],['watermark',lang === 'fr' ? 'Filigranes' : 'Watermarks']].map(([mode,label])=>`<button type="button" data-scene-mode="${mode}" aria-controls="scene-${project.id}" aria-pressed="${mode === 'attack'}">${label}</button>`).join('')}</div>` : ''}<canvas id="scene-${project.id}" data-project-scene="${project.id}" data-lang="${lang}" width="${architecture ? 400 : 440}" height="${architecture ? 610 : cispa ? 250 : 184}" role="img" aria-label="${e(visualLabels[project.id][lang])}">${e(visualLabels[project.id][lang])}</canvas>
     <div class="project-animation-footer"><span>${architecture ? (lang === 'fr' ? 'Architecture · fig. 3–5 du rapport' : 'Architecture · report fig. 3–5') : (lang === 'fr' ? 'Illustration du concept' : 'Concept illustration')}</span><button type="button" class="animation-toggle" data-animation-toggle aria-controls="scene-${project.id}" aria-pressed="false" aria-label="${e(`${lang === 'fr' ? 'Animer' : 'Animate'} : ${project.title[lang]}`)}"><span class="animation-icon" aria-hidden="true"></span>Animation</button></div>
   </div>`;
 }
