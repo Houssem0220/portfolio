@@ -4,6 +4,8 @@ export const profile = {
   email: 'houssem.guermazi@student-cs.fr',
   github: 'https://github.com/Houssem0220',
   linkedin: 'https://www.linkedin.com/in/houssem-guermazi/',
+  photo: './assets/houssem-guermazi.png',
+  cv: './assets/cv-houssem-guermazi.pdf',
 };
 
 export const copy = {
@@ -14,6 +16,7 @@ export const copy = {
     tagline: ['Recherche en', 'apprentissage automatique'],
     intro: 'Élève-ingénieur à CentraleSupélec et étudiant du master MVA à l’ENS Paris-Saclay. Je m’intéresse aux modèles, à leur évaluation et aux systèmes qui les rendent efficaces.',
     explore: 'Voir les projets', contactMe: 'Contact', availability: 'Stage de recherche · Avril 2027',
+    downloadCv: 'Télécharger le CV',
     rotation: 'Rotation', points: 'Points', mesh: 'Maillage', canvasLabel: 'Maillage géométrique interactif. Utilisez les flèches du clavier pour le faire tourner.',
     school1: 'Ingénieur · 2023–2027', school2: 'Master recherche · 2026–2027', school3: 'Échange · Jan.–Mai 2025',
     projectIndex: '01 / PROJETS', projectTitle: ['Projets de recherche'],
@@ -52,6 +55,7 @@ export const copy = {
     tagline: ['Machine learning', 'research'],
     intro: 'Engineering student at CentraleSupélec and MVA master’s student at ENS Paris-Saclay. I am interested in models, their evaluation, and the systems that make them efficient.',
     explore: 'View projects', contactMe: 'Contact', availability: 'Research internship · April 2027',
+    downloadCv: 'Download CV',
     rotation: 'Rotation', points: 'Points', mesh: 'Mesh', canvasLabel: 'Interactive geometric mesh. Use the arrow keys to rotate it.',
     school1: 'Engineering · 2023–2027', school2: 'Research master’s · 2026–2027', school3: 'Exchange · Jan.–May 2025',
     projectIndex: '01 / PROJECTS', projectTitle: ['Research projects'],

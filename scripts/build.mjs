@@ -6,6 +6,7 @@ import { copy, profile, projects } from '../public/content.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const publicDir = resolve(root, 'public');
+for (const asset of [profile.photo, profile.cv]) await access(resolve(publicDir, asset));
 for (const filename of ['styles.css', 'app.js', 'mesh.js', 'project-scenes.js', 'forecasting-scene.js', 'cispa-scene.js', 'assets/favicon.svg']) await access(resolve(publicDir,filename));
 if (projects.filter(p=>p.featured).length !== 1) throw new Error('Exactly one featured project is required.');
 if (new Set(projects.map(p=>p.id)).size !== projects.length) throw new Error('Les identifiants des projets doivent être uniques.');

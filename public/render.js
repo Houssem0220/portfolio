@@ -70,10 +70,11 @@ export function renderSite(lang = 'fr') {
     <section class="hero container" id="top" aria-labelledby="hero-name">
       <div class="hero-grid">
         <div class="hero-copy">
+          <img class="hero-portrait" src="${e(profile.photo)}" alt="${e(profile.name)}" width="1744" height="1744" fetchpriority="high">
           <h1 id="hero-name">Houssem<br>Guermazi<span>.</span></h1>
           <p class="hero-tagline">${lines(t.tagline)}</p>
           <p class="hero-intro">${e(t.intro)}</p>
-          <div class="hero-actions"><a class="button button-primary" href="#projects">${t.explore}</a><a class="button button-outline" href="#contact">${t.contactMe}</a></div>
+          <div class="hero-actions"><a class="button button-primary" href="#projects">${t.explore}</a><a class="button button-outline" href="${e(profile.cv)}" download="CV-Houssem-Guermazi.pdf">${t.downloadCv}</a><a class="button button-outline" href="#contact">${t.contactMe}</a></div>
           <p class="availability">${t.availability}</p>
         </div>
         <div class="hero-visual">
@@ -121,6 +122,6 @@ export function renderSite(lang = 'fr') {
     </div></section>
   </main>
 
-  <footer id="contact" class="contact-section"><div class="container"><div class="contact-grid"><div class="reveal"><h2>${lines(t.contactTitle)}</h2><p>${t.contactIntro}</p></div><div class="contact-actions reveal"><p class="footer-label">${t.contactMe}</p><a class="email-link" href="mailto:${profile.email}">${profile.email}</a><button type="button" id="copy-email" class="button button-light-outline js-only">${t.copyEmail}</button><p id="copy-status" role="status" aria-live="polite"></p><p class="footer-label">${t.work}</p><div class="social-links"><a href="${profile.github}" target="_blank" rel="noopener noreferrer">GitHub</a><a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div></div><div class="footer-bottom"><a href="#top">Houssem Guermazi</a><p>${t.languages}</p></div></div></footer>
+  <footer id="contact" class="contact-section"><div class="container"><div class="contact-grid"><div class="reveal"><h2>${lines(t.contactTitle)}</h2><p>${t.contactIntro}</p></div><div class="contact-actions reveal"><p class="footer-label">${t.contactMe}</p><a class="email-link" href="mailto:${profile.email}">${profile.email}</a><a class="button button-light-outline" href="${e(profile.cv)}" download="CV-Houssem-Guermazi.pdf">${t.downloadCv}</a><button type="button" id="copy-email" class="button button-light-outline js-only">${t.copyEmail}</button><p id="copy-status" role="status" aria-live="polite"></p><p class="footer-label">${t.work}</p><div class="social-links"><a href="${profile.github}" target="_blank" rel="noopener noreferrer">GitHub</a><a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div></div><div class="footer-bottom"><a href="#top">Houssem Guermazi</a><p>${t.languages}</p></div></div></footer>
   <dialog id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span>${t.projects}</span><button type="button" class="dialog-close" aria-label="${t.close}">${t.close} <span aria-hidden="true">×</span></button></div><div id="dialog-content"></div></dialog>`;
 }

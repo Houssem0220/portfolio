@@ -64,6 +64,7 @@ python -m http.server 4173 --directory public
 - Versions française et anglaise ; préférence de langue mémorisée dans le navigateur.
 - Maillage 3D animé : rotation, affichage des points, interaction à la souris et au clavier.
 - Vue illustrative de tétraèdres avec modes faces / arêtes / sommets.
+- Photo de profil et CV PDF téléchargeable depuis la présentation et la section Contact, en FR/EN.
 - Contact par email, copie de l’adresse et lien LinkedIn.
 - Mise en page responsive, navigation mobile, prise en compte de la réduction des animations et styles d’impression.
 
@@ -95,7 +96,7 @@ Les informations de parcours, dates, expériences et projets proviennent du CV f
 - https://github.com/Houssem0220/footnote-docx
 - https://github.com/Houssem0220/python-docx-cleaner
 
-Les projets du CV ne sont pas associés à un dépôt supposé : seuls les liens vérifiés sont affichés. Les chiffres de speedup et les conclusions expérimentales du projet Delaunay ne sont pas publiés dans le site. Le CV original n’est pas hébergé automatiquement, car il contient ces résultats ; le site propose le contact par email. Les géométries animées sont des illustrations, pas des sorties de benchmark.
+Les projets du CV ne sont pas associés à un dépôt supposé : seuls les liens vérifiés sont affichés. Les chiffres de speedup et les conclusions expérimentales du projet Delaunay ne sont pas repris dans les textes du site. Le CV original est disponible dans `public/assets/cv-houssem-guermazi.pdf`, avec des liens de téléchargement dans la présentation et la section Contact. La photo fournie est conservée dans `public/assets/houssem-guermazi.png`. Les géométries animées sont des illustrations, pas des sorties de benchmark.
 
 ## Vérification
 
