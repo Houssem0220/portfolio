@@ -67,6 +67,8 @@ body:has(dialog[open]){overflow:hidden}
 .logo-bnp{width:156px;height:98px}
 .academic-rail a{justify-content:center}
 .academic-rail .organization-logo{width:144px;height:76px}
+.academic-rail .logo-mva{width:220px}
+.education-item>.logo-mva{width:260px;height:88px}
 .singapore-left>.organization-logo{width:224px;height:139px;margin-bottom:24px}
 .education-item>.organization-logo{margin-bottom:18px}
 .experience-brand{display:flex;align-items:center;gap:24px;margin-bottom:12px}
@@ -85,3 +87,4 @@ body:not(.enhanced) .project-visual:not(:has(.delaunay-visual)){display:none}
 @media(max-width:900px){.experience-brand{align-items:flex-start}.experience-brand .experience-title{flex-direction:column;align-items:flex-start}.experience-brand .date{order:-1}.logo-bnp{width:132px;height:83px}}
 @media(max-width:680px){.hero-visual{grid-row:1}.hero-copy{grid-row:2}.hero-artwork{max-width:300px}.hero-artwork canvas{max-height:none;aspect-ratio:1}.hero-portrait-link{width:220px}.hero-portrait{border-width:5px}.hero-visual .mesh-controls{margin-top:12px}.hero-grid{gap:30px;padding-top:26px}.portrait-link-label{font-size:13px;padding:7px 15px}.experience-brand{flex-direction:column;gap:14px}.experience-brand .organization-logo{margin-bottom:0}.project-visual{height:280px}.project-visual .feature-canvas-wrap canvas{max-height:220px}.academic-rail a{align-items:flex-start}.academic-rail .organization-logo{width:128px;height:74px;margin:0 0 4px}.education-item>.organization-logo{width:160px;height:96px;margin-bottom:12px}}
 @media print{.hero-visual{display:block!important;width:160px;margin:0 0 20px}.hero-artwork{width:160px}.hero-artwork canvas,.portrait-link-label,.hero-visual .mesh-controls,.project-visual{display:none!important}.hero-portrait-link{width:160px;max-width:100%}}
+@media(max-width:680px){.academic-rail .logo-mva{width:220px;height:84px}.education-item>.logo-mva{width:240px;height:96px}}

@@ -94,10 +94,10 @@ Les coordonnées et les textes à actualiser sont centralisés dans `public/cont
 
 ## Sources et choix éditoriaux
 
-Les visuels MVA et NUS sont téléchargés depuis leurs sites officiels et servis localement :
+Les logos MVA et NUS sont servis localement en PNG transparent :
 
-- MVA : [site du master](https://www.master-mva.com/), [visuel original](https://www.master-mva.com/wp-content/uploads/2019/06/mva.jpg).
-- NUS : [identité visuelle](https://www.nus.edu.sg/identity/guidelines/logo-colour-and-background), [logo original](https://www.nus.edu.sg/images/default-source/identity-images/NUS_logo_full-horizontal.jpg).
+- MVA : image `logo_mva_935x701.jpg` fournie par Houssem, avec suppression du fond via imagegen, conservée dans `public/assets/logos/mva-transparent.png`.
+- NUS : [identité visuelle](https://www.nus.edu.sg/identity/guidelines/logo-colour-and-background), [version officielle transparente](https://www.nus.edu.sg/research/images/librariesprovider2/default-album/nus-logo-blue-1200.png?sfvrsn=fe1f6aa6_1), conservée dans `public/assets/logos/nus-transparent.png`.
 
 Les informations de parcours, dates, expériences et projets proviennent du CV fourni, « cv stage fin d’étude.pdf ». Les deux descriptions de dépôts proviennent de leurs README publics :
 
