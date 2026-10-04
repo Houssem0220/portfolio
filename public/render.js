@@ -13,7 +13,8 @@ function organizationLogo(key) {
 }
 
 function projectAffiliation(project, lang) {
-  const logo = project.organization.startsWith(logos.centralesupelec.name) ? organizationLogo('centralesupelec') : '';
+  const logoKey = project.organization.startsWith(logos.centralesupelec.name) ? 'centralesupelec' : project.organization === 'NUS' ? 'nus' : null;
+  const logo = organizationLogo(logoKey);
   return `<div class="project-affiliation">${logo}<p class="project-context">${e(project.organization)} · ${e(project.date[lang])}</p></div>`;
 }
 
@@ -99,8 +100,8 @@ export function renderSite(lang = 'fr') {
       </div>
       <div class="academic-rail">
         <a href="#education">${organizationLogo('centralesupelec')}<strong>CentraleSupélec</strong><span>${t.school1}</span></a>
-        <a href="#education"><strong>MVA / ENS Paris-Saclay</strong><span>${t.school2}</span></a>
-        <a href="#singapore"><strong>NUS · Singapore</strong><span>${t.school3}</span></a>
+        <a href="#education">${organizationLogo('mva')}<strong>MVA / ENS Paris-Saclay</strong><span>${t.school2}</span></a>
+        <a href="#singapore">${organizationLogo('nus')}<strong>NUS · Singapore</strong><span>${t.school3}</span></a>
       </div>
     </section>
 
@@ -110,7 +111,7 @@ export function renderSite(lang = 'fr') {
         <div class="project-toolbar js-only"><div class="filters" role="group" aria-label="${lang === 'fr' ? 'Filtrer les projets' : 'Filter projects'}">${t.filters.map(([key, label]) => `<button type="button" data-filter="${key}" aria-pressed="${key === 'all'}">${label}</button>`).join('')}</div><span id="project-count" class="sr-only" role="status" aria-live="polite"></span></div>
         <article class="featured-project forecasting-feature reveal" data-project-card data-category="${featured.category}" id="project-${featured.id}">
           ${projectAnimation(featured,lang)}
-          <div class="feature-copy"><p class="featured-label">${lang === 'fr' ? 'PROJET SÉLECTIONNÉ' : 'SELECTED PROJECT'}</p><p class="project-context">${featured.organization} · ${featured.date[lang]}</p><h3>${featured.title[lang]}</h3><p>${featured.summary[lang]}</p><p class="architecture-explainer">${lang === 'fr' ? 'Architecture encodeur-décodeur : fusion des métadonnées et de l’historique, initialisation du décodeur, cross-attention et prévision des revenus quotidiens.' : 'Encoder–decoder architecture: metadata and history fusion, decoder initialization, cross-attention, and daily revenue prediction.'}</p>${tags(featured.tags)}<button class="button button-primary js-only" type="button" data-project="${featured.id}">${t.view}</button><details class="fallback-details"><summary>${t.more}</summary>${list(featured.approach[lang])}<p>${e(featured.takeaway[lang])}</p></details></div>
+          <div class="feature-copy"><p class="featured-label">${lang === 'fr' ? 'PROJET SÉLECTIONNÉ' : 'SELECTED PROJECT'}</p>${projectAffiliation(featured, lang)}<h3>${featured.title[lang]}</h3><p>${featured.summary[lang]}</p><p class="architecture-explainer">${lang === 'fr' ? 'Architecture encodeur-décodeur : fusion des métadonnées et de l’historique, initialisation du décodeur, cross-attention et prévision des revenus quotidiens.' : 'Encoder–decoder architecture: metadata and history fusion, decoder initialization, cross-attention, and daily revenue prediction.'}</p>${tags(featured.tags)}<button class="button button-primary js-only" type="button" data-project="${featured.id}">${t.view}</button><details class="fallback-details"><summary>${t.more}</summary>${list(featured.approach[lang])}<p>${e(featured.takeaway[lang])}</p></details></div>
         </article>
         <div class="project-grid">${projects.filter(p => p !== featured).map((p,i) => projectCard(p,lang,i)).join('')}</div>
         <div class="more-projects js-only"><p>${t.also}</p><button type="button" class="button button-outline" id="show-all-projects" aria-expanded="false">${t.showAll}</button></div>
@@ -128,11 +129,11 @@ export function renderSite(lang = 'fr') {
 
     <section class="section education-section" id="education" aria-labelledby="education-heading"><div class="container"><div class="reveal"><p class="section-index">${t.educationIndex}</p><h2 id="education-heading">${lines(t.educationTitle)}</h2></div><div class="education-grid">
       <article class="education-item reveal">${organizationLogo('centralesupelec')}<h3>CentraleSupélec</h3><p class="education-degree">${t.csDegree}</p><p>${t.csText}</p><div class="gpa">${t.grades.map(e).join('<br>')}</div></article>
-      <article class="education-item reveal"><h3>MVA</h3><p class="education-degree">ENS Paris-Saclay · 2026–2027</p><p>${t.mvaText}</p></article>
+      <article class="education-item reveal">${organizationLogo('mva')}<h3>MVA</h3><p class="education-degree">ENS Paris-Saclay · 2026–2027</p><p>${t.mvaText}</p></article>
     </div><p class="prep-line reveal">${t.prep}</p></div></section>
 
     <section class="singapore" id="singapore" aria-labelledby="singapore-heading"><div class="container singapore-grid">
-      <div class="singapore-left reveal"><p class="singapore-word">Singapore<span>.</span></p><p class="nus-name">National University of Singapore</p><p>${t.singaporeDate}</p><div class="singapore-coordinate" aria-hidden="true"><span>PARIS</span><span class="route-line"><i></i></span><span>SINGAPORE</span></div></div>
+      <div class="singapore-left reveal">${organizationLogo('nus')}<p class="singapore-word">Singapore<span>.</span></p><p class="nus-name">National University of Singapore</p><p>${t.singaporeDate}</p><div class="singapore-coordinate" aria-hidden="true"><span>PARIS</span><span class="route-line"><i></i></span><span>SINGAPORE</span></div></div>
       <div class="singapore-copy reveal"><h2 id="singapore-heading">${lines(t.singaporeTitle)}</h2><p>${t.singaporeText}</p><p class="gpa">${t.singaporeGpa}</p><p class="course-list">Advanced Deep Learning · Reinforcement Learning · Fundamentals of Machine Learning</p><div class="nus-projects"><h3>${t.academicProjects}</h3><a href="#project-forecasting" class="text-link" data-project="forecasting">${t.forecast}</a><a href="#project-reinforcement-learning" class="text-link" data-project="reinforcement-learning">${t.control}</a></div></div>
     </div></section>
   </main>

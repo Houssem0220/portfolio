@@ -10,6 +10,8 @@ export const profile = {
 
 export const logos = {
   centralesupelec: { name: 'CentraleSupélec', src: './assets/logos/centralesupelec.png', width: 320, height: 320 },
+  mva: { name: 'Master MVA', src: './assets/logos/mva.jpg', width: 800, height: 380 },
+  nus: { name: 'National University of Singapore', src: './assets/logos/nus.jpg', width: 1390, height: 862 },
   bnp: { name: 'BNP Paribas', src: './assets/logos/bnp-paribas.webp', width: 800, height: 500 },
   sfr: { name: 'SFR', src: './assets/logos/sfr.svg', width: 1000, height: 1000 },
 };

@@ -61,15 +61,19 @@ body:has(dialog[open]){overflow:hidden}
 .portrait-link-label{position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:9px 18px;background:var(--blue);color:white;border:3px solid white;border-radius:30px;font-size:14px;font-weight:600;white-space:nowrap}
 .organization-logo{display:block;object-fit:contain;width:148px;height:88px;flex-shrink:0}
 .logo-centralesupelec{object-fit:cover}
+.logo-mva{width:176px}
+.logo-nus{width:176px;height:110px}
 .logo-sfr{width:56px;height:56px}
 .logo-bnp{width:156px;height:98px}
 .academic-rail a{justify-content:center}
-.academic-rail .organization-logo{width:104px;height:58px;margin-top:-8px}
+.academic-rail .organization-logo{width:144px;height:76px}
+.singapore-left>.organization-logo{width:224px;height:139px;margin-bottom:24px}
 .education-item>.organization-logo{margin-bottom:18px}
 .experience-brand{display:flex;align-items:center;gap:24px;margin-bottom:12px}
 .experience-brand .experience-title{flex:1;min-width:0}
 .project-affiliation{display:flex;align-items:center;gap:14px;min-height:64px;width:100%}
 .project-affiliation .organization-logo{width:80px;height:64px}
+.project-affiliation .logo-nus{width:104px;height:64px}
 .project-visual{display:flex;align-items:center;width:100%;height:320px;margin-bottom:20px;border:1px solid #e7ecf5;border-radius:8px;background:var(--soft);overflow:hidden}
 .enhanced .project-visual .project-animation.js-only{display:flex;flex-direction:column;justify-content:center;height:100%;margin:0;border:0;border-radius:0}
 .project-visual .project-animation canvas{flex:1;min-height:0;height:0;aspect-ratio:auto}

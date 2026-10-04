@@ -65,7 +65,7 @@ python -m http.server 4173 --directory public
 - Maillage 3D animé : rotation, affichage des points, interaction à la souris et au clavier.
 - Vue illustrative de tétraèdres avec modes faces / arêtes / sommets.
 - Photo de profil et CV PDF téléchargeable depuis la présentation et la section Contact, en FR/EN.
-- Portrait agrandi, avec lien vers LinkedIn ; logos de CentraleSupélec, BNP Paribas et SFR dans les sections correspondantes.
+- Portrait agrandi, avec lien vers LinkedIn ; logos de CentraleSupélec, MVA, NUS, BNP Paribas et SFR dans les sections correspondantes.
 - Visuels des cartes de projets de même hauteur, avec affiliations et logos associés.
 - Contact par email, copie de l’adresse et lien LinkedIn.
 - Mise en page responsive, navigation mobile, prise en compte de la réduction des animations et styles d’impression.
@@ -93,6 +93,11 @@ Pour partager directement la version anglaise, ajouter `?lang=en` à l’adresse
 Les coordonnées et les textes à actualiser sont centralisés dans `public/content.js`. La disponibilité actuellement affichée est avril 2027.
 
 ## Sources et choix éditoriaux
+
+Les visuels MVA et NUS sont téléchargés depuis leurs sites officiels et servis localement :
+
+- MVA : [site du master](https://www.master-mva.com/), [visuel original](https://www.master-mva.com/wp-content/uploads/2019/06/mva.jpg).
+- NUS : [identité visuelle](https://www.nus.edu.sg/identity/guidelines/logo-colour-and-background), [logo original](https://www.nus.edu.sg/images/default-source/identity-images/NUS_logo_full-horizontal.jpg).
 
 Les informations de parcours, dates, expériences et projets proviennent du CV fourni, « cv stage fin d’étude.pdf ». Les deux descriptions de dépôts proviennent de leurs README publics :
 
