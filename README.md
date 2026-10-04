@@ -65,6 +65,8 @@ python -m http.server 4173 --directory public
 - Maillage 3D animé : rotation, affichage des points, interaction à la souris et au clavier.
 - Vue illustrative de tétraèdres avec modes faces / arêtes / sommets.
 - Photo de profil et CV PDF téléchargeable depuis la présentation et la section Contact, en FR/EN.
+- Portrait agrandi, avec lien vers LinkedIn ; logos de CentraleSupélec, BNP Paribas et SFR dans les sections correspondantes.
+- Visuels des cartes de projets de même hauteur, avec affiliations et logos associés.
 - Contact par email, copie de l’adresse et lien LinkedIn.
 - Mise en page responsive, navigation mobile, prise en compte de la réduction des animations et styles d’impression.
 
@@ -75,6 +77,7 @@ La version française est aussi générée en HTML : le contenu principal est co
 | Fichier | Rôle |
 | --- | --- |
 | `public/content.js` | Textes FR/EN, liens, expériences et détails des projets |
+| `public/assets/logos/` | Logos fournis, associés aux organisations dans `public/content.js` |
 | `public/render.js` | Structure HTML des sections et des fiches projet |
 | `public/styles.css` | Couleurs, typographie, mise en page, mobile et impression |
 | `public/app.js` | Filtres, langue, menu mobile, fiches projet et contact |

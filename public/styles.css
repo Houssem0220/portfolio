@@ -53,6 +53,31 @@ dialog{border:0;border-radius:12px;box-shadow:0 30px 100px #0004;max-width:800px
 body:has(dialog[open]){overflow:hidden}
 @media(max-width:680px){.canvas-caption,.singapore-coordinate{font-size:12px}.feature-controls label,.feature-controls legend{font-size:14px}.filters button,.language-switch,.language-switch button{font-size:14px}}
 
-.hero-portrait{display:block;width:112px;height:112px;object-fit:cover;border-radius:50%;margin-bottom:24px}
+.hero-artwork{position:relative;width:100%;aspect-ratio:1;display:grid;place-items:center}
+.hero-artwork canvas{opacity:.42}
+.hero-portrait-link{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:block;width:clamp(230px,26vw,380px);max-width:74%;border-radius:50%}
+.hero-portrait{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border:6px solid white;border-radius:50%;box-shadow:0 12px 36px #171a2114;transition:box-shadow .2s}
+.hero-portrait-link:hover .hero-portrait{box-shadow:0 12px 40px #245dff33}
+.portrait-link-label{position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:9px 18px;background:var(--blue);color:white;border:3px solid white;border-radius:30px;font-size:14px;font-weight:600;white-space:nowrap}
+.organization-logo{display:block;object-fit:contain;width:148px;height:88px;flex-shrink:0}
+.logo-centralesupelec{object-fit:cover}
+.logo-sfr{width:56px;height:56px}
+.logo-bnp{width:156px;height:98px}
+.academic-rail a{justify-content:center}
+.academic-rail .organization-logo{width:104px;height:58px;margin-top:-8px}
+.education-item>.organization-logo{margin-bottom:18px}
+.experience-brand{display:flex;align-items:center;gap:24px;margin-bottom:12px}
+.experience-brand .experience-title{flex:1;min-width:0}
+.project-affiliation{display:flex;align-items:center;gap:14px;min-height:64px;width:100%}
+.project-affiliation .organization-logo{width:80px;height:64px}
+.project-visual{display:flex;align-items:center;width:100%;height:320px;margin-bottom:20px;border:1px solid #e7ecf5;border-radius:8px;background:var(--soft);overflow:hidden}
+.enhanced .project-visual .project-animation.js-only{display:flex;flex-direction:column;justify-content:center;height:100%;margin:0;border:0;border-radius:0}
+.project-visual .project-animation canvas{flex:1;min-height:0;height:0;aspect-ratio:auto}
+.project-visual .project-animation-footer,.project-visual .scene-modes{flex-shrink:0}
+.project-card .project-visual .delaunay-visual{height:100%;margin:0;border:0;border-radius:0}
+.project-visual .feature-canvas-wrap canvas{max-height:250px}
+body:not(.enhanced) .project-visual:not(:has(.delaunay-visual)){display:none}
 .contact-actions a[download]{margin-right:12px}
-@media(max-width:680px){.hero-portrait{width:88px;height:88px;margin-bottom:20px}}
+@media(max-width:900px){.experience-brand{align-items:flex-start}.experience-brand .experience-title{flex-direction:column;align-items:flex-start}.experience-brand .date{order:-1}.logo-bnp{width:132px;height:83px}}
+@media(max-width:680px){.hero-visual{grid-row:1}.hero-copy{grid-row:2}.hero-artwork{max-width:300px}.hero-artwork canvas{max-height:none;aspect-ratio:1}.hero-portrait-link{width:220px}.hero-portrait{border-width:5px}.hero-visual .mesh-controls{margin-top:12px}.hero-grid{gap:30px;padding-top:26px}.portrait-link-label{font-size:13px;padding:7px 15px}.experience-brand{flex-direction:column;gap:14px}.experience-brand .organization-logo{margin-bottom:0}.project-visual{height:280px}.project-visual .feature-canvas-wrap canvas{max-height:220px}.academic-rail a{align-items:flex-start}.academic-rail .organization-logo{width:128px;height:74px;margin:0 0 4px}.education-item>.organization-logo{width:160px;height:96px;margin-bottom:12px}}
+@media print{.hero-visual{display:block!important;width:160px;margin:0 0 20px}.hero-artwork{width:160px}.hero-artwork canvas,.portrait-link-label,.hero-visual .mesh-controls,.project-visual{display:none!important}.hero-portrait-link{width:160px;max-width:100%}}

@@ -1,4 +1,4 @@
-import { profile, copy, projects, repositories, experiences } from './content.js';
+import { profile, copy, projects, repositories, experiences, logos } from './content.js';
 import { visualLabels } from './project-scenes.js';
 
 export const escapeHtml = (value) => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -7,9 +7,19 @@ const lines = (values) => values.map(e).join('<br>');
 const tags = (values) => `<ul class="tags" aria-label="Technologies">${values.map(v => `<li>${e(v)}</li>`).join('')}</ul>`;
 const list = (values) => `<ul class="bullet-list">${values.map(v => `<li>${e(v)}</li>`).join('')}</ul>`;
 
+function organizationLogo(key) {
+  const logo = logos[key];
+  return logo ? `<img class="organization-logo logo-${key}" src="${e(logo.src)}" alt="" width="${logo.width}" height="${logo.height}" loading="lazy" decoding="async">` : '';
+}
+
+function projectAffiliation(project, lang) {
+  const logo = project.organization.startsWith(logos.centralesupelec.name) ? organizationLogo('centralesupelec') : '';
+  return `<div class="project-affiliation">${logo}<p class="project-context">${e(project.organization)} · ${e(project.date[lang])}</p></div>`;
+}
+
 export function projectDetails(project, lang) {
   const t = copy[lang];
-  return `<p class="project-context">${e(project.organization)} · ${e(project.date[lang])}</p>
+  return `${projectAffiliation(project, lang)}
     <h2 id="dialog-title">${e(project.title[lang])}</h2>
     ${tags(project.tags)}
     <div class="detail-section"><h3>${t.problem}</h3><p>${e(project.problem[lang])}</p></div>
@@ -38,8 +48,8 @@ function delaunayVisual(lang) {
 function projectCard(project, lang, index) {
   const t = copy[lang];
   return `<article class="project-card reveal" data-project-card data-category="${project.category}" data-extra="${index > 3}" id="project-${project.id}">
-    ${project.id === 'delaunay' ? delaunayVisual(lang) : projectAnimation(project,lang)}
-    <p class="project-context">${e(project.organization)} · ${e(project.date[lang])}</p>
+    <div class="project-visual">${project.id === 'delaunay' ? delaunayVisual(lang) : projectAnimation(project,lang)}</div>
+    ${projectAffiliation(project, lang)}
     <h3>${e(project.title[lang])}</h3>
     <p>${e(project.summary[lang])}</p>
     <button class="text-button js-only" type="button" data-project="${project.id}">${t.view}<span class="plus" aria-hidden="true">+</span></button>
@@ -70,7 +80,6 @@ export function renderSite(lang = 'fr') {
     <section class="hero container" id="top" aria-labelledby="hero-name">
       <div class="hero-grid">
         <div class="hero-copy">
-          <img class="hero-portrait" src="${e(profile.photo)}" alt="${e(profile.name)}" width="1744" height="1744" fetchpriority="high">
           <h1 id="hero-name">Houssem<br>Guermazi<span>.</span></h1>
           <p class="hero-tagline">${lines(t.tagline)}</p>
           <p class="hero-intro">${e(t.intro)}</p>
@@ -78,12 +87,18 @@ export function renderSite(lang = 'fr') {
           <p class="availability">${t.availability}</p>
         </div>
         <div class="hero-visual">
-          <canvas id="hero-mesh" role="img" tabindex="0" aria-label="${t.canvasLabel}" width="620" height="620">${t.canvasLabel}</canvas>
+          <div class="hero-artwork">
+            <canvas id="hero-mesh" role="img" tabindex="0" aria-label="${t.canvasLabel}" width="620" height="620">${t.canvasLabel}</canvas>
+            <a class="hero-portrait-link" href="${e(profile.linkedin)}" target="_blank" rel="noopener noreferrer" aria-label="${e(profile.name)} — LinkedIn">
+              <img class="hero-portrait" src="${e(profile.photo)}" alt="${e(profile.name)}" width="1744" height="1744" fetchpriority="high">
+              <span class="portrait-link-label">LinkedIn <span aria-hidden="true">↗</span></span>
+            </a>
+          </div>
           <div class="mesh-controls js-only"><button class="mini-button" type="button" data-rotation="hero" aria-pressed="true">${t.rotation}</button><button class="mini-button" type="button" data-point-mode aria-pressed="false">${t.points}</button></div>
         </div>
       </div>
       <div class="academic-rail">
-        <a href="#education"><strong>CentraleSupélec</strong><span>${t.school1}</span></a>
+        <a href="#education">${organizationLogo('centralesupelec')}<strong>CentraleSupélec</strong><span>${t.school1}</span></a>
         <a href="#education"><strong>MVA / ENS Paris-Saclay</strong><span>${t.school2}</span></a>
         <a href="#singapore"><strong>NUS · Singapore</strong><span>${t.school3}</span></a>
       </div>
@@ -107,12 +122,12 @@ export function renderSite(lang = 'fr') {
     </section>
 
     <section class="section container" id="experience" aria-labelledby="experience-heading">
-      <div class="experience-layout"><div class="experience-heading reveal"><p class="section-index">${t.experienceIndex}</p><h2 id="experience-heading">${lines(t.experienceTitle)}</h2><p class="section-lead">${t.experienceIntro}</p></div><div class="experience-list">${experiences.map(x=>`<article class="experience-item reveal"><div class="experience-title"><h3>${x.company}</h3><span class="date">${x.date[lang]}</span></div><p class="role">${x.role}</p><p>${x.intro[lang]}</p>${list(x.bullets[lang])}<details><summary>${t.more}<span class="plus" aria-hidden="true">+</span></summary>${list(x.details[lang])}</details></article>`).join('')}</div></div>
+      <div class="experience-layout"><div class="experience-heading reveal"><p class="section-index">${t.experienceIndex}</p><h2 id="experience-heading">${lines(t.experienceTitle)}</h2><p class="section-lead">${t.experienceIntro}</p></div><div class="experience-list">${experiences.map(x=>`<article class="experience-item reveal"><div class="experience-brand">${organizationLogo(x.logo)}<div class="experience-title"><h3>${x.company}</h3><span class="date">${x.date[lang]}</span></div></div><p class="role">${x.role}</p><p>${x.intro[lang]}</p>${list(x.bullets[lang])}<details><summary>${t.more}<span class="plus" aria-hidden="true">+</span></summary>${list(x.details[lang])}</details></article>`).join('')}</div></div>
       <div class="skills reveal"><h2>${lines(t.skillsTitle)}</h2><div class="skill-grid">${t.skills.map(([title,body])=>`<div><h3>${title}</h3><p>${body}</p></div>`).join('')}</div></div>
     </section>
 
     <section class="section education-section" id="education" aria-labelledby="education-heading"><div class="container"><div class="reveal"><p class="section-index">${t.educationIndex}</p><h2 id="education-heading">${lines(t.educationTitle)}</h2></div><div class="education-grid">
-      <article class="education-item reveal"><h3>CentraleSupélec</h3><p class="education-degree">${t.csDegree}</p><p>${t.csText}</p><div class="gpa">${t.grades.map(e).join('<br>')}</div></article>
+      <article class="education-item reveal">${organizationLogo('centralesupelec')}<h3>CentraleSupélec</h3><p class="education-degree">${t.csDegree}</p><p>${t.csText}</p><div class="gpa">${t.grades.map(e).join('<br>')}</div></article>
       <article class="education-item reveal"><h3>MVA</h3><p class="education-degree">ENS Paris-Saclay · 2026–2027</p><p>${t.mvaText}</p></article>
     </div><p class="prep-line reveal">${t.prep}</p></div></section>
 

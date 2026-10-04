@@ -8,6 +8,12 @@ export const profile = {
   cv: './assets/cv-houssem-guermazi.pdf',
 };
 
+export const logos = {
+  centralesupelec: { name: 'CentraleSupélec', src: './assets/logos/centralesupelec.png', width: 320, height: 320 },
+  bnp: { name: 'BNP Paribas', src: './assets/logos/bnp-paribas.webp', width: 800, height: 500 },
+  sfr: { name: 'SFR', src: './assets/logos/sfr.svg', width: 1000, height: 1000 },
+};
+
 export const copy = {
   fr: {
     title: 'Houssem Guermazi — Recherche & ingénierie ML',
@@ -175,14 +181,14 @@ export const repositories = [
 
 export const experiences = [
   {
-    company: 'BNP Paribas Innovation Lab', role: 'R&D / AI Intern',
+    company: 'BNP Paribas Innovation Lab', role: 'R&D / AI Intern', logo: 'bnp',
     date: {fr: 'JAN. — JUIL. 2026', en: 'JAN. — JULY 2026'},
     intro: {fr: 'Systèmes d’inférence multi-LLM, recherche documentaire hybride et évaluation de la factualité.', en: 'Multi-LLM inference systems, hybrid document retrieval and factuality evaluation.'},
     bullets: {fr: ['Passerelle d’inférence compatible OpenAI sur Azure.', 'Routage de modèles, répartition de charge et contrôle de capacité.', 'Évaluation des affirmations à partir des documents sources.'], en: ['OpenAI-compatible inference gateway on Azure.', 'Model routing, load balancing and capacity controls.', 'Claim-level evaluation against source documents.']},
     details: {fr: ['Adaptateurs de schémas JSON propres aux modèles, sérialisation des appels d’outils et configuration du raisonnement.', 'Recherche hybride BM25 + recherche sémantique dense sur ChromaDB.', 'Évaluation de factualité par plusieurs juges LLM, avec un seuil de consensus de 80 %.', 'Conception d’un système LangChain / LangGraph pour la génération de communiqués financiers à partir de 300 à 600 documents Word, avec des boucles de vérification.'], en: ['Model-specific JSON schema adapters, tool-call serialization and reasoning configurations.', 'Hybrid BM25 and dense semantic retrieval over ChromaDB.', 'Factuality evaluation using multiple LLM judges with an 80% consensus threshold.', 'Designed a LangChain / LangGraph system for financial press-release generation from 300–600 Word documents, with verification loops.']},
   },
   {
-    company: 'SFR', role: 'Data Scientist', date: {fr: 'JUIL. — DÉC. 2025', en: 'JULY — DEC. 2025'},
+    company: 'SFR', role: 'Data Scientist', logo: 'sfr', date: {fr: 'JUIL. — DÉC. 2025', en: 'JULY — DEC. 2025'},
     intro: {fr: 'Détection de fraude à grande échelle, représentations visuelles et apprentissage sur graphes.', en: 'Large-scale fraud detection, visual representations and graph-based learning.'},
     bullets: {fr: ['Gestion du déséquilibre des classes et optimisation des seuils.', 'Embeddings de réseaux neuronaux avec XGBoost et Random Forest.', 'Généralisation à de nouvelles entités et à de nouveaux schémas de fraude.'], en: ['Class-imbalance handling and threshold optimization.', 'Neural-network embeddings combined with XGBoost and Random Forest.', 'Generalization to unseen entities and new fraud patterns.']},
     details: {fr: ['Échantillonnage stratifié et pondération des classes dans les pipelines de détection.', 'Pipelines hybrides combinant des représentations de réseaux neuronaux et de Vision Transformers avec des modèles tabulaires.', 'Modélisation des interactions sous forme de graphes, échantillonnage de voisinages et étude de la scalabilité.', 'Développement sur Vertex AI de systèmes spécialisés en NLP et recherche documentaire.'], en: ['Stratified sampling and class weighting in detection pipelines.', 'Hybrid pipelines combining neural-network and Vision Transformer representations with tabular models.', 'Graph modeling of interactions, neighborhood sampling and scalability analysis.', 'Development of specialized NLP and document-retrieval systems on Vertex AI.']},
